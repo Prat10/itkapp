@@ -51,7 +51,6 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:id="@+id/web2"
                     android:src="@drawable/teacher" />
 
                 <TextView
@@ -85,7 +84,6 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:id="@+id/web3"
                     android:src="@drawable/student" />
 
                 <TextView
