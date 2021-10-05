@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.famco.itk_19">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ITK19">
-        <activity android:name=".MainActivity2"></activity>
+        <activity
+            android:name=".MainPage"
+            android:label="@string/title_activity_main_page"
+            android:theme="@style/Theme.ITK19.NoActionBar"></activity>
+        <activity android:name=".Homepage" />
+        <activity android:name=".Registration" />
+        <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

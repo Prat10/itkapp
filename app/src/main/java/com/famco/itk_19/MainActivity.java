@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.nfc.Tag;
+import android.nfc.TagLostException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     ImageView web1;
@@ -29,15 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent=new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("http://itkorba.ac.in/"));
             startActivity(intent);
+     }
+       else if(view==web2){
+           Intent intent=new Intent(MainActivity.this,Login.class);
+           startActivity(intent);
         }
-        else if(view==web2)
-        {
-            Intent intent=new Intent(MainActivity.this,MainActivity2.class);
-            startActivity(intent);
-        }
-        else if(view==web3){
-            Intent intent=new Intent(MainActivity.this,MainActivity2.class);
-            startActivity(intent);
+       else if(view==web3){
+           Intent intent=new Intent(MainActivity.this,Registration.class);
+           startActivity(intent);
         }
     }
     }
