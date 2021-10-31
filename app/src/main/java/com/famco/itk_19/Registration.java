@@ -10,6 +10,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,12 +18,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
- public class Registration extends AppCompatActivity implements View.OnClickListener{
-    private EditText inputEmail, inputPassword, inputName;
-    private Button register;
-    private TextView signin;
-    private FirebaseAuth mAuth;
+import org.jetbrains.annotations.NotNull;
+
+public class Registration extends AppCompatActivity implements View.OnClickListener{
+    EditText inputEmail, inputPassword, inputName;
+    Button register;
+    TextView signin;
+    Spinner semester,branch;
+    FirebaseAuth mAuth;
+    DatabaseReference databaseReference;
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,40 +38,48 @@ import com.google.firebase.auth.FirebaseAuth;
         setContentView(R.layout.activity_main3);
         mAuth = FirebaseAuth.getInstance();
         signin = findViewById(R.id.lnkLogin);
+        branch=findViewById(R.id.spinner1);
+        semester=findViewById(R.id.spinner2);
         signin.setOnClickListener(this);
         register = findViewById(R.id.btnRegister);
         inputEmail = (EditText) findViewById(R.id.txtEmail);
         inputPassword = (EditText) findViewById(R.id.txtPwd);
         inputName = findViewById(R.id.txtName);
+        databaseReference=FirebaseDatabase.getInstance().getReference("Student");
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email=inputEmail.getText().toString().trim();
                 String password=inputPassword.getText().toString().trim();
                 String name=inputName.getText().toString().trim();
+                String item = branch.getSelectedItem().toString();
+                String item1 =semester.getSelectedItem().toString();
                 if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)||TextUtils.isEmpty(name)){
                     Toast.makeText(Registration.this, "Enter email and password ", Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    regis(email,password);
-                }
-            }
-        });
-    }
-    private void regis(String email,String password)
-    {
        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
            @Override
            public void onComplete(@NonNull Task<AuthResult> task) {
                if(task.isSuccessful())
                {
-                   Toast.makeText(Registration.this, "Successfully Registered ", Toast.LENGTH_SHORT).show();
-               }else{
-                   Toast.makeText(Registration.this, "Failed", Toast.LENGTH_SHORT).show();
+                   Student information=new Student(
+                           email,password,name,item,item1
+                   );
+                   FirebaseDatabase.getInstance().getReference("Student")
+                           .child(mAuth.getInstance().getCurrentUser().getUid())
+                           .setValue(information).addOnCompleteListener(new OnCompleteListener<Void>() {
+                       @Override
+                       public void onComplete(@NonNull @NotNull Task<Void> task) {
+                           Toast.makeText(Registration.this,"Registration completed",Toast.LENGTH_SHORT).show();
+                           startActivity(new Intent(getApplicationContext(),Cse.class));
+                       }
+                   });
                }
        }});
+            }
+        });
+    }
 
-       }
      @Override
      public void onClick(View view){
          if(view==signin){

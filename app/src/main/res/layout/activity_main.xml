@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="#FED8B1"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
         android:layout_width="match_parent"
@@ -23,6 +23,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_below="@id/on2"
+        android:background="#78C7C7"
         android:layout_height="match_parent"
         android:alignmentMode="alignMargins"
         android:rowCount="2"
@@ -30,7 +31,6 @@
         android:columnOrderPreserved="false"
         android:padding="14dp">
         <androidx.cardview.widget.CardView
-
             android:layout_height="0dp"
             android:layout_width="0dp"
             android:layout_rowWeight="1"
@@ -54,7 +54,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Stuff"
+                    android:text="Staff"
                     android:textSize="16sp"
                     android:layout_gravity="center"
                     android:textAlignment="center"
@@ -97,6 +97,7 @@
 
             android:layout_height="0dp"
             android:layout_width="0dp"
+            android:layout_marginTop="8dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="8dp"
@@ -132,6 +133,7 @@
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
             app:cardCornerRadius="4dp"
             app:cardElevation="4dp">
@@ -143,6 +145,7 @@
                 android:orientation="vertical">
                 <ImageView
                     android:layout_width="100dp"
+                    android:id="@+id/help"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/help"/>
