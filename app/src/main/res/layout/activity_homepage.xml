@@ -5,49 +5,52 @@
     android:layout_height="fill_parent"
     android:background="#FFF8DC"
     android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/name"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:paddingHorizontal="23dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        android:background="#F0FFFF"
-        android:layout_marginTop="115dp"
-        android:hint="Enter your Name"/>
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_marginTop="35dp"
-        android:background="#F0FFFF"
-        android:paddingHorizontal="23dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:entries="@array/b_arrays"
-        android:prompt="@string/branch_prompt" />
+        android:layout_height="wrap_content"
+        android:text="Teacher Portal:"
+        android:textColor="@color/black"
+        android:textSize="34dp"
+        />
+ <LinearLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+    <ImageView
+        android:layout_width="120dp"
+        android:id="@+id/portal"
+        android:layout_marginTop="30dp"
+        android:layout_height="120dp"
+        android:src="@drawable/attendance"/>
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp"
-        android:background="#F0FFFF"
-        android:layout_marginTop="35dp"
-        android:paddingHorizontal="23dp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:entries="@array/d_arrays"
-        android:prompt="@string/sem_prompt"
-       />
-
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="45dp"
-        android:backgroundTint="@color/teal_700"
+     <ImageView
+         android:id="@+id/notice"
+         android:layout_width="100dp"
+         android:layout_height="115dp"
+         android:layout_marginTop="30dp"
+         android:layout_marginLeft="95dp"
+         android:src="@drawable/notices" />
+ </LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Attendance"
+        android:layout_marginLeft="8dp"
+        android:textSize="13sp"
+        android:textAlignment="center"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latest Notices"
+            android:layout_marginLeft="100dp"
+            android:textSize="13sp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
 
 </LinearLayout>

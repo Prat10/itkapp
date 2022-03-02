@@ -28,6 +28,9 @@ public class Cse extends AppCompatActivity implements View.OnClickListener {
     ImageButton image;
     private FirebaseUser user;
     ImageView study;
+    ImageView web1;
+    ImageView fee;
+    ImageView attend;
     private DatabaseReference reference;
     private String userID;
     FirebaseAuth mAuth;
@@ -38,8 +41,39 @@ public class Cse extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_cse);
         image = findViewById(R.id.imageButton);
         image.setOnClickListener(this);
+        web1=findViewById(R.id.web1);
+        web1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://csvtu.ac.in/ew/result-reg-supply/"));
+                startActivity(intent);
+            }
+        });
         study = findViewById(R.id.study);
-        study.setOnClickListener(this);
+        study.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cse.this, Electrical.class);
+                startActivity(intent);
+            }
+        });
+        fee = findViewById(R.id.fee);
+        fee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cse.this, Fee.class);
+                startActivity(intent);
+            }
+        });
+        attend=findViewById(R.id.attend);
+        attend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Cse.this, Attendence.class);
+                startActivity(intent);
+            }
+        });
         user = mAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Student");
         userID = user.getUid();
@@ -72,16 +106,12 @@ public class Cse extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        if (v == study) {
-            Intent intent = new Intent(Cse.this, Electrical.class);
-            startActivity(intent);
-        }
-
+    public void onClick (View v) {
         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             pickImage();
         else
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 123);
+
 
     }
 
@@ -113,5 +143,4 @@ public class Cse extends AppCompatActivity implements View.OnClickListener {
 
         }
     }
-
-    }
+}

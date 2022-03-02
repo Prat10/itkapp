@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            startActivity(intent);
         }
        else if(view==web3){
-           Intent intent=new Intent(MainActivity.this,Registration.class);
+           Intent intent=new Intent(MainActivity.this,Mechanical.class);
            startActivity(intent);
         }
         else if(view==help){
